@@ -1,0 +1,24 @@
+[#1] Dividend: 12 || Denominator: 3
+6
+Incorrect, correct quotient is: 4
+[#2] Dividend: 0 || Denominator: 1
+0
+[#3] Dividend: 54 || Denominator: 9
+6
+[#4] Dividend: 110 || Denominator: 11
+5
+Incorrect, correct quotient is: 10
+[#5] Dividend: 63 || Denominator: 7
+9
+[#6] Dividend: 21 || Denominator: 3
+7
+[#7] Dividend: 30 || Denominator: 6
+5
+[#8] Dividend: 11 || Denominator: 1
+1
+Incorrect, correct quotient is: 11
+[#9] Dividend: 16 || Denominator: 2
+8
+[#10] Dividend: 2 || Denominator: 2
+1
+Your total score is 7/10
