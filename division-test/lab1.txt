@@ -1,3 +1,4 @@
+$ ./lab1
 [#1] Dividend: 12 || Denominator: 3
 6
 Incorrect, correct quotient is: 4
