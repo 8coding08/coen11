@@ -1,0 +1,119 @@
+$ ./a.out 
+Commands:
+[a]dd - Adds player to waitlist
+[l]ist - List waitlist
+[n]ext - Get next person from waitlist
+[q]uit - Quits program
+l
+The waitlist is currently empty.
+a
+Welcome! What is your name?
+Sam
+Hey there Sam! Please describe your symptom
+tired
+You are #1 in the queue! Please wait for your turn
+l
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Sam -> tired
++======[     By: Sam      ]======+
+a
+Welcome! What is your name?
+Jack
+Hey there Jack! Please describe your symptom
+homework
+You are #2 in the queue! Please wait for your turn
+l
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Sam -> tired
+#2  | Jack -> homework
++======[     By: Sam      ]======+
+a
+Welcome! What is your name?
+Max 
+Hey there Max! Please describe your symptom
+confused
+You are #3 in the queue! Please wait for your turn
+a
+Welcome! What is your name?
+Jack
+That name is already in use! Please try the 'a' command again.
+a
+Welcome! What is your name?
+Rayan
+Hey there Rayan! Please describe your symptom
+cold
+You are #4 in the queue! Please wait for your turn
+l
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Sam -> tired
+#2  | Jack -> homework
+#3  | Max -> confused
+#4  | Rayan -> cold
++======[     By: Sam      ]======+
+a
+Welcome! What is your name?
+Paul
+Hey there Paul! Please describe your symptom
+math
+You are #5 in the queue! Please wait for your turn
+l
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Sam -> tired
+#2  | Jack -> homework
+#3  | Max -> confused
+#4  | Rayan -> cold
+#5  | Paul -> math
++======[     By: Sam      ]======+
+a
+The waitlist is full! Maximum of 5 people reached.
+l
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Sam -> tired
+#2  | Jack -> homework
+#3  | Max -> confused
+#4  | Rayan -> cold
+#5  | Paul -> math
++======[     By: Sam      ]======+
+n
+The next person is Sam
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Jack -> homework
+#2  | Max -> confused
+#3  | Rayan -> cold
+#4  | Paul -> math
++======[     By: Sam      ]======+
+n
+The next person is Jack
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Max -> confused
+#2  | Rayan -> cold
+#3  | Paul -> math
++======[     By: Sam      ]======+
+n
+The next person is Max
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Rayan -> cold
+#2  | Paul -> math
++======[     By: Sam      ]======+
+a
+Welcome! What is your name?
+John
+Hey there John! Please describe your symptom
+warm
+You are #3 in the queue! Please wait for your turn
+l
++======[ Current Waitlist ]======+
+[#] |   Name -> Symptom    
+#1  | Rayan -> cold
+#2  | Paul -> math
+#3  | John -> warm
++======[     By: Sam      ]======+
+q

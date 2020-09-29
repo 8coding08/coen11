@@ -1,6 +1,7 @@
 #include <stdio.h>
 //amount of people queue can hold
 #define SIZE 5
+char INSTRUCTIONS[200] = "Commands:\n[a]dd - Adds player to waitlist\n[l]ist - List waitlist\n[n]ext - Get next person from waitlist\n[q]uit - Quits program\n";
 //number to increment as queue grows
 int counter = 0;
 
@@ -10,6 +11,7 @@ char symptoms[SIZE][20];
 
 int main()
 {
+    printf(INSTRUCTIONS);
     //start a loop for command handler
     while (1 == 1)
     {
@@ -52,41 +54,33 @@ void insert()
     printf("Welcome! What is your name?\n");
     scanf("%s", &name);
     //check if name length is too long
-    if (strlen(name) > 20)
+    //check if name already is in use
+    if (isRepeat(name) == 1)
     {
-        printf("Your name must be less than 20 characters!\n");
-        insert();
+        //if name is in use tell them and have them pick again.
+        printf("That name is already in use! Please try the 'a' command again.\n");
+        return;
     }
     else
     {
-        //check if name already is in use
-        if (isRepeat(name) == 1)
+        //if name is NOT in use ask for their symptom
+        printf("Hey there %s! Please describe your symptom\n", name);
+        scanf("%s", &symptom);
+        if (strlen(name) > 20 || strlen(symptom) > 20)
         {
-            //if name is in use tell them and have them pick again.
-            printf("That name is already in use!\n");
-            insert();
+            printf("Your symptom and name must be less than 20 characters! Please try the 'a' command again.\n");
+            return;
         }
         else
         {
-            //if name is NOT in use ask for their symptom
-            printf("Hey there %s! Please describe your symptom\n", name);
-            scanf("%s", &symptom);
-            if (strlen(symptom) > 20)
-            {
-                printf("Symptom must be less than 20 characters!\n");
-                insert();
-            }
-            else
-            {
-                //confirmation that they have joined the queue with provided queue number
-                printf("You are #%d in the queue! Please wait for your turn\n", counter + 1);
+            //confirmation that they have joined the queue with provided queue number
+            printf("You are #%d in the queue! Please wait for your turn\n", counter + 1);
 
-                //add user to the queue
-                strcpy(names[counter], name);
-                strcpy(symptoms[counter], symptom);
-                //increment the queue counter
-                counter++;
-            }
+            //add user to the queue
+            strcpy(names[counter], name);
+            strcpy(symptoms[counter], symptom);
+            //increment the queue counter
+            counter++;
         }
     }
 }
@@ -94,13 +88,15 @@ void insert()
 //Prints out the entire waitlist
 void print()
 {
+    if(counter == 0) return printf("The waitlist is currently empty.\n");
     int i;
-    printf("+============+\n");
-    for (i = 0; i < SIZE; i++)
+    printf("+======[ Current Waitlist ]======+\n");
+    printf("[#] |   Name -> Symptom    \n");
+    for (i = 0; i < counter; i++)
     {
-        printf("#%d | %s -> %s\n", i + 1, names[i], symptoms[i]);
+    printf("#%d  | %s -> %s\n", i + 1, names[i], symptoms[i]);
     }
-    printf("+============+\n");
+    printf("+======[     By: Sam      ]======+\n");
 }
 
 void next()
@@ -143,3 +139,4 @@ int isRepeat(char name[20])
     }
     return val;
 }
+
