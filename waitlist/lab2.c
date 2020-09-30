@@ -15,11 +15,31 @@ int main()
     //start a loop for command handler
     while (1 == 1)
     {
-
         //ask for command and direct user to specific function
         char option;
         scanf("%c", &option);
-        if (option == 'q')
+	switch(option) {
+	case 'q':
+	exit(0);
+	break;
+	case 'a':
+	if(SIZE == counter) {
+	printf("waitlist is full");
+	} else {
+	insert();
+	}
+	break;
+	case 'l':
+	print();
+	break;
+	case 'n':
+	next();
+	break;
+	default:
+	printf(INSTRUCTIONS);
+	break;
+	}
+     /*   if (option == 'q')
             break;
         if (option == 'a')
         {
@@ -35,7 +55,7 @@ int main()
         if (option == 'l')
             print();
         if (option == 'n')
-            next();
+            next(); */
     }
     return 0;
     //end of main
