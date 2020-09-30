@@ -1,89 +1,87 @@
 #include <stdio.h>
-//amount of people queue can hold
+//Amount of people waitlist can hold
 #define SIZE 5
-char INSTRUCTIONS[200] = "Commands:\n[a]dd - Adds player to waitlist\n[l]ist - List waitlist\n[n]ext - Get next person from waitlist\n[q]uit - Quits program\n";
-//number to increment as queue grows
+#define INSTRUCTIONS "Commands:\n[a]dd - Adds player to waitlist\n[l]ist - List waitlist\n[n]ext - Get next person from waitlist\n[q]uit - Quits program\n"
+//Instructions shown on startup
+//char INSTRUCTIONS[200] = "Commands:\n[a]dd - Adds player to waitlist\n[l]ist - List waitlist\n[n]ext - Get next person from waitlist\n[q]uit - Quits program\n";
+//Number to increment as waitlist grows
 int counter = 0;
 
-//waitlist controller arrays
+//Waitlist controller arrays
 char names[SIZE][20];
 char symptoms[SIZE][20];
 
+/*
+MAIN FUNCTION:
+Starts the program, command handler and waitlist full checker here.
+@param {void}
+@return {int}
+*/
 int main()
 {
+    //Provide a list of commands for the user to use and reference
     printf(INSTRUCTIONS);
-    //start a loop for command handler
+    //Start a loop for command handler
     while (1 == 1)
     {
-        //ask for command and direct user to specific function
+        //Ask for command and direct user to specific function
         char option;
         scanf("%c", &option);
-	switch(option) {
-	case 'q':
-	exit(0);
-	break;
-	case 'a':
-	if(SIZE == counter) {
-	printf("waitlist is full");
-	} else {
-	insert();
-	}
-	break;
-	case 'l':
-	print();
-	break;
-	case 'n':
-	next();
-	break;
-	default:
-	printf(INSTRUCTIONS);
-	break;
-	}
-     /*   if (option == 'q')
-            break;
-        if (option == 'a')
+        switch (option)
         {
+        case 'q':
+            printf("Exiting waitlist...");
+            exit(0);
+            break;
+        case 'a':
+            //If the waitlist is full prompt the user
             if (SIZE == counter)
             {
                 printf("The waitlist is full! Maximum of %d people reached.\n", SIZE);
             }
+            //If it is not full allow user to insert name/symptom
             else
             {
                 insert();
             }
-        }
-        if (option == 'l')
+            break;
+        case 'l':
             print();
-        if (option == 'n')
-            next(); */
+            break;
+        case 'n':
+            next();
+            break;
+        }
     }
     return 0;
-    //end of main
+    //End of main function
 }
 
 /*
 INSERT FUNCTION:
 Adds the <name> and <symptom> to the end of the list
+@param {void}
+@return {void}
 */
 void insert()
 {
-    //define vars
+    //Define vars
     char name[20];
     char symptom[20];
-    //prompt for name
+    //Prompt for name
     printf("Welcome! What is your name?\n");
     scanf("%s", &name);
-    //check if name length is too long
-    //check if name already is in use
+    //Check if name length is too long
+    //Check if name already is in use
     if (isRepeat(name) == 1)
     {
-        //if name is in use tell them and have them pick again.
+        //If name is in use tell them and have them pick again.
         printf("That name is already in use! Please try the 'a' command again.\n");
         return;
     }
     else
     {
-        //if name is NOT in use ask for their symptom
+        //If name is NOT in use ask for their symptom
         printf("Hey there %s! Please describe your symptom\n", name);
         scanf("%s", &symptom);
         if (strlen(name) > 20 || strlen(symptom) > 20)
@@ -93,42 +91,65 @@ void insert()
         }
         else
         {
-            //confirmation that they have joined the queue with provided queue number
-            printf("You are #%d in the queue! Please wait for your turn\n", counter + 1);
+            //Confirmation that they have joined the waitlist with provided waitlist number
+            printf("You are #%d in the waitlist! Please wait for your turn\n", counter + 1);
 
-            //add user to the queue
+            //Add user to the waitlist
             strcpy(names[counter], name);
             strcpy(symptoms[counter], symptom);
-            //increment the queue counter
+            //Increment the waitlist counter
             counter++;
         }
     }
-}
+} //End of insert function
 
-//Prints out the entire waitlist
+/*
+PRINT FUNCTION:
+Prints out the entire waitlist
+@param {void}
+@return {void}
+*/
 void print()
 {
-    if(counter == 0) return printf("The waitlist is currently empty.\n");
-    int i;
-    printf("+======[ Current Waitlist ]======+\n");
-    printf("[#] |   Name -> Symptom    \n");
-    for (i = 0; i < counter; i++)
+    //If the counter is zero it means nobody is on the waitlist
+    if (counter == 0)
     {
-    printf("#%d  | %s -> %s\n", i + 1, names[i], symptoms[i]);
+        return printf("The waitlist is currently empty.\n");
     }
-    printf("+======[     By: Sam      ]======+\n");
-}
+    else
+    {
+        int i;
+        //Print out the current waitlist using a for loop to iterate through the array
+        printf("+======[ Waitlist Max Size: %d ]======+\n", SIZE);
+        printf("[#] |  Name -> Symptom\n");
+        //To avoid unecessary lines I used counter as the upper limit so it would stop after the array is full
+        for (i = 0; i < counter; i++)
+        {
+            printf("#%d  | %s -> %s\n", i + 1, names[i], symptoms[i]);
+        }
+        printf("+=====================================+\n");
+    }
+} //End of print function
 
+/*
+NEXT FUNCTION:
+Moves users up in the waitlist and provides who the next person is
+@param {void}
+@return {void}
+*/
 void next()
 {
+    //If the counter is zero it means nobody is on the waitlist
     if (counter == 0)
     {
         printf("The waitlist is empty!\n");
     }
     else
     {
-        printf("The next person is %s", names[0]);
+        //First person in line is at index 0
+        printf("\n\nThe next person from the waitlist is %s\n\n", names[0]);
         int i;
+        //Shifts every name/symptom in the waitlist up one
         for (i = 0; i < SIZE - 1; i++)
         {
             strcpy(names[i], names[i + 1]);
@@ -136,27 +157,31 @@ void next()
             strcpy(symptoms[i], symptoms[i + 1]);
             strcpy(symptoms[i + 1], "");
         }
+        //Decrement the counter to keep next() position in sync
         counter--;
-        printf("\n");
         print();
     }
 }
 /* 
-Helper function to check if a name already exists in queue
+isRepeat FUNCTION
+Helper function to check if a name already exists in waitlist
 @param {char string} The name to test
 @return {int} 1 if is duplicate, 0 if not a duplicate
 */
 int isRepeat(char name[20])
 {
     int i;
+    //Initialize at 0
     int val = 0;
+    //Loop through array
     for (i = 0; i < SIZE; i++)
     {
+        //Detect if name is equal
         if (strcmp(name, names[i]) == 0)
         {
+            //Set to one if name is equal
             val = 1;
         }
     }
     return val;
 }
-
