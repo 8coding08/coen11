@@ -1,9 +1,8 @@
 #include <stdio.h>
 //Amount of people waitlist can hold
 #define SIZE 5
-#define INSTRUCTIONS "Commands:\n[a]dd - Adds player to waitlist\n[l]ist - List waitlist\n[n]ext - Get next person from waitlist\n[q]uit - Quits program\n"
 //Instructions shown on startup
-//char INSTRUCTIONS[200] = "Commands:\n[a]dd - Adds player to waitlist\n[l]ist - List waitlist\n[n]ext - Get next person from waitlist\n[q]uit - Quits program\n";
+#define INSTRUCTIONS "Commands:\n[a]dd - Adds player to waitlist\n[l]ist - List waitlist\n[n]ext - Get next person from waitlist\n[q]uit - Quits program\n"
 //Number to increment as waitlist grows
 int counter = 0;
 
