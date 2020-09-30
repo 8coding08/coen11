@@ -71,7 +71,6 @@ void insert()
     //Prompt for name
     printf("Welcome! What is your name?\n");
     scanf("%s", &name);
-    //Check if name length is too long
     //Check if name already is in use
     if (isRepeat(name) == 1)
     {
@@ -84,6 +83,7 @@ void insert()
         //If name is NOT in use ask for their symptom
         printf("Hey there %s! Please describe your symptom\n", name);
         scanf("%s", &symptom);
+        //Check if name and symptom length is too long
         if (strlen(name) > 20 || strlen(symptom) > 20)
         {
             printf("Your symptom and name must be less than 20 characters! Please try the 'a' command again.\n");
