@@ -30,7 +30,7 @@ int main()
         switch (option)
         {
         case 'q':
-            printf("Exiting waitlist...");
+            printf("Exiting waitlist...\n");
             exit(0);
             break;
         case 'a':
