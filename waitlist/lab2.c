@@ -18,12 +18,14 @@ Starts the program, command handler and waitlist full checker here.
 */
 int main()
 {
+    printf("Starting waitlist program...");
     //Initialize Arrays
-int k;
-for(k=0; k < SIZE; k++) {
-strcpy(names[k], "");
-strcpy(symptoms[k], "");
-}
+    int k;
+    for (k = 0; k < SIZE; k++)
+    {
+        strcpy(names[k], "");
+        strcpy(symptoms[k], "");
+    }
     //Provide a list of commands for the user to use and reference
     printf(INSTRUCTIONS);
     //Start a loop for command handler
@@ -35,7 +37,7 @@ strcpy(symptoms[k], "");
         switch (option)
         {
         case 'q':
-            printf("Exiting waitlist...\n");
+            printf("Exiting waitlist program...\n");
             exit(0);
             break;
         case 'a':
@@ -59,8 +61,7 @@ strcpy(symptoms[k], "");
         }
     }
     return 0;
-    //End of main function
-}
+} //End of main function
 
 /*
 INSERT FUNCTION:
@@ -166,7 +167,8 @@ void next()
         counter--;
         print();
     }
-}
+} //End of next function
+
 /* 
 isRepeat FUNCTION
 Helper function to check if a name already exists in waitlist
@@ -189,4 +191,4 @@ int isRepeat(char name[20])
         }
     }
     return val;
-}
+} //End of isRepeat function
