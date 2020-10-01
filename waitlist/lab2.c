@@ -18,6 +18,12 @@ Starts the program, command handler and waitlist full checker here.
 */
 int main()
 {
+    //Initialize Arrays
+int k;
+for(k=0; k < SIZE; k++) {
+strcpy(names[k], "");
+strcpy(symptoms[k], "");
+}
     //Provide a list of commands for the user to use and reference
     printf(INSTRUCTIONS);
     //Start a loop for command handler
