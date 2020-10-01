@@ -79,41 +79,44 @@ void insert()
     printf("Welcome! What is your name?\n");
     scanf("%s", &name);
     //Check if name is greater than char max length
-    if(strlen(name) > 20) {
-	printf("Your name must be less than 20 characters! Try the 'a' command again.\n");
-	return;    
-    } else {
-    //Check if name already is in use
-    if (isRepeat(name) == 1)
+    if (strlen(name) > 20)
     {
-        //If name is in use tell them and have them pick again.
-        printf("That name is already in use! Please try the 'a' command again.\n");
+        printf("Your name must be less than 20 characters! Try the 'a' command again.\n");
         return;
     }
-    else 
+    else
     {
-        //If name is NOT in use ask for their symptom
-        printf("Hey there %s! Please describe your symptom\n", name);
-        scanf("%s", &symptom);
-        //Check if name and symptom length is too long
-        if (strlen(symptom) > 20)
+        //Check if name already is in use
+        if (isRepeat(name) == 1)
         {
-            printf("Your symptom and name must be less than 20 characters! Please try the 'a' command again.\n");
+            //If name is in use tell them and have them pick again.
+            printf("That name is already in use! Please try the 'a' command again.\n");
             return;
         }
         else
         {
-            //Confirmation that they have joined the waitlist with provided waitlist number
-            printf("You are #%d in the waitlist! Please wait for your turn\n", counter + 1);
+            //If name is NOT in use ask for their symptom
+            printf("Hey there %s! Please describe your symptom\n", name);
+            scanf("%s", &symptom);
+            //Check if name and symptom length is too long
+            if (strlen(symptom) > 20)
+            {
+                printf("Your symptom and name must be less than 20 characters! Please try the 'a' command again.\n");
+                return;
+            }
+            else
+            {
+                //Confirmation that they have joined the waitlist with provided waitlist number
+                printf("You are #%d in the waitlist! Please wait for your turn\n", counter + 1);
 
-            //Add user to the waitlist
-            strcpy(names[counter], name);
-            strcpy(symptoms[counter], symptom);
-            //Increment the waitlist counter
-            counter++;
+                //Add user to the waitlist
+                strcpy(names[counter], name);
+                strcpy(symptoms[counter], symptom);
+                //Increment the waitlist counter
+                counter++;
+            }
         }
     }
-}
 } //End of insert function
 
 /*
