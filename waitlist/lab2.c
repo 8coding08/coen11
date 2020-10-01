@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 //Amount of people waitlist can hold
 #define SIZE 5
 //Instructions shown on startup
